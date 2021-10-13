@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Twitter Clone</title>
+    <!-- <link rel="stylesheet" href="styles.css"/> -->
+    <style>
+        .twitter{
+            display: flex;
+            flex-direction: row;
+            width: auto;
+        }
+        .navigation{
+            width: 20%;
+            height: 100vh;
+            /* background-color: blueviolet; */
+        }
+        nav{
+            width: 100%;
+            height: 100vh;
+            margin:10px auto 10px 10px;
+            /* border: solid 2px green; */
+            border-radius: 35px;
+            align-items: flex-start;
+            /* padding: 20px auto 20px 0px ; */
+            
+        }
+        nav>div{
+            height: 80%;
+            margin:10px ;
+            justify-content: center;
+            
+        }
+        nav>div>button{
+           padding-block-end: 0px;
+        }
+        nav>div>ul{
+            height: 70%;
+            width: 100%;
+            /* border: lime 3px dashed; */
+            padding-inline-start: 0px;
+        }
+        nav>div >ul>li {
+            
+            border-radius: 35px ;
+            cursor: pointer;
+            list-style: none;
+            height: 25px;
+            font-size: 20px;
+            text-align: left;
+            width: fit-content;
+            color: black;
+            padding: 15px;
+            /* padding-left:10px; */
+            margin: auto;
+            display: flex;
+            float: left;
+            flex-direction: row;
+
+        }
+        
+        nav>div >ul>li>a{
+            padding: 0px 10px 12px 12px;
+        }
+        nav>div >ul>li:hover{
+            background-color:rgb(206, 206, 206);
+            width:max-content;
+            /* padding: 15px; */
+        }
+        
+        button{
+            background-color: rgb(29, 155, 240);
+            font-weight: 700;
+            font-size: 15px;
+            color: white;
+            width: 200px;
+            height: 50px;
+            padding-left: auto;
+            border-radius: 30px;
+            margin: auto;
+            box-shadow: violet;
+            cursor: pointer;
+        }
+        .fa-ellipsis1{
+            border: solid black 3px;
+            border-radius: 50px;
+        }
+
+        .profileDetails{
+            width:200px ;
+            height: 50px;
+            margin: 8px;
+            margin-top: 50px;
+            display: flex;
+            flex-direction: row;
+            cursor:pointer;
+        }
+
+        .profilepic>img{
+            border:1px solid black;
+            border-radius: 50px;
+            height: 40px;
+            width: 40px;
+            margin: 4px;
+        }
+        
+        
+        .profile{
+            display: flex;
+            flex-direction: column;
+            font-size: 16px;
+            margin: auto;
+        }
+        .more{
+          text-align: center;
+          margin: auto;
+        }
+        .profileDetails:hover{
+            width:200px ;
+            height: 50px;
+            margin-top: 50px;
+            display: flex;
+            flex-direction: row;
+            background-color:rgb(206, 206, 206);
+            width:210px;
+            border-radius: 30px;
+
+        }
+        .container{
+            width: 80%;
+            margin: auto;
+            background-color: white;
+            border: violet 5px solid;
+        }
+        .icon{
+           width: 40px;
+           height: 40px;
+           padding: 15px;
+           margin-left: 10px;
+        }
+        .icon:hover,.latestweets:hover {
+            width: 40px;
+           height: 40px;
+           padding:15px;
+           background-color: lightskyblue;
+           border-radius: 50px;
+        }
+        /* nav completed */
+
+
+        /* <!--tweets feed starts--> */
+
+        .tweetsFeed{
+            width:50%;
+            height: 100vh;
+            display:flex;
+            flex-direction: column;
+            background-color: lightskyblue;
+            border-left: 2px solid black;
+            border-right: 2px solid black;
+        }
+       .trending{
+            width:30%;
+            height: 100vh;
+            display:flex;
+            flex-direction: column;
+            background-color: rgb(100, 250, 230);
+            border-left: 2px solid black;
+            border-right: 2px solid black;
+       }
+
+       .homenav{
+           display: flex;
+           flex-direction: row;
+           justify-content: space-between;
+           margin-top: 1px;
+           border-bottom:black solid 2px;
+           height: 70px;
+           padding-left: 5px;
+           cursor: pointer;
+
+       }
+       .latestweets{
+        height: 30px;
+        width: 30px;
+        padding: 15px;
+        cursor: pointer;
+       }
+       
+
+    </style>
+</head>
+<body>
+    <!-- sidebarstatrs -->
+    <div class="container twitter">
+    <div class="navigation">
+        <div class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" class="r-1cvl2hr r-4qtqp9 r-yyyyoo r-16y2uox r-8kz0gk r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-lrsllp"><g><path d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z"></path></g></svg></div>
+       
+        <nav>
+            <div>
+              <ul>
+                <li> <i class="fa-solid fa-house-chimney"></i> <a>Home</a></li>
+                
+                <li><i class="fa-solid fa-magnifying-glass"></i> <a>Search</a></li>
+                <li><i class="fa-solid fa-bell"></i> <a>Notifications </a></li>
+               <li> <i class="fa-solid fa-message"></i><a> Messages</a></li>
+               <li> <i class="fa-solid fa-bookmark"></i><a> Bookmarks</a></li>
+               <li><i class="fa-solid fa-list"></i><a> Lists</a></li>
+               <li><i class="fa-solid fa-user"></i><a> Profile</a></li>
+               <li><i class="fa-solid fa-ellipsis fa-ellipsis1"></i> <a>More</a></li>
+               
+              </ul>
+               <button><a>Tweet</a></button>
+               <div class="profileDetails">
+                   <div class="profilepic">
+                       <img src="profileimg.jpg">
+                   </div>
+                   <div class="profile"><span>VenkataRamana</span>
+                        <span>Venkat1191</span>
+                    </div>
+                    <div class="more"><i class="fa-solid fa-ellipsis"></i></div>
+               </div>
+            </div>
+        </nav>
+    </div>
+        <div class="tweetsFeed">
+         <div class="homenav">
+           <div>  <a><h2>Home</h2></a></div>
+             
+               <a href="">  <div class="latestweets"><svg viewBox="0 0 24 24" aria-hidden="true" class="r-18jsvk2 r-4qtqp9 r-yyyyoo r-z80fyv r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-19wmn03"><g><path d="M22.772 10.506l-5.618-2.192-2.16-6.5c-.102-.307-.39-.514-.712-.514s-.61.207-.712.513l-2.16 6.5-5.62 2.192c-.287.112-.477.39-.477.7s.19.585.478.698l5.62 2.192 2.16 6.5c.102.306.39.513.712.513s.61-.207.712-.513l2.16-6.5 5.62-2.192c.287-.112.477-.39.477-.7s-.19-.585-.478-.697zm-6.49 2.32c-.208.08-.37.25-.44.46l-1.56 4.695-1.56-4.693c-.07-.21-.23-.38-.438-.462l-4.155-1.62 4.154-1.622c.208-.08.37-.25.44-.462l1.56-4.693 1.56 4.694c.07.212.23.382.438.463l4.155 1.62-4.155 1.622zM6.663 3.812h-1.88V2.05c0-.414-.337-.75-.75-.75s-.75.336-.75.75v1.762H1.5c-.414 0-.75.336-.75.75s.336.75.75.75h1.782v1.762c0 .414.336.75.75.75s.75-.336.75-.75V5.312h1.88c.415 0 .75-.336.75-.75s-.335-.75-.75-.75zm2.535 15.622h-1.1v-1.016c0-.414-.335-.75-.75-.75s-.75.336-.75.75v1.016H5.57c-.414 0-.75.336-.75.75s.336.75.75.75H6.6v1.016c0 .414.335.75.75.75s.75-.336.75-.75v-1.016h1.098c.414 0 .75-.336.75-.75s-.336-.75-.75-.75z"></path></g></svg></div></a>
+
+         </div>
+
+        </div>
+        <div class="trending"></div>
+    </div>
+</body>
+</html>
