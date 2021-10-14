@@ -9,15 +9,21 @@
     <title>Twitter Clone</title>
     <!-- <link rel="stylesheet" href="styles.css"/> -->
     <style>
+        body{
+            font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --twitterColor:rgb(29, 155, 240);
+        }
         .twitter{
             display: flex;
             flex-direction: row;
             width: auto;
         }
+        
         .navigation{
             width: 20%;
             height: 100vh;
             /* background-color: blueviolet; */
+            position: relative;
         }
         nav{
             width: 100%;
@@ -37,6 +43,7 @@
         }
         nav>div>button{
            padding-block-end: 0px;
+           margin-top: 20px;
         }
         nav>div>ul{
             height: 70%;
@@ -64,16 +71,16 @@
         }
         
         nav>div >ul>li>a{
-            padding: 0px 10px 12px 12px;
+            padding: 0px 10px 12px 22px;
         }
         nav>div >ul>li:hover{
-            background-color:rgb(206, 206, 206);
+            background-color:lightskyblue;
             width:max-content;
             /* padding: 15px; */
         }
         
         button{
-            background-color: rgb(29, 155, 240);
+            background-color: var(--twitterColor);
             font-weight: 700;
             font-size: 15px;
             color: white;
@@ -84,6 +91,7 @@
             margin: auto;
             box-shadow: violet;
             cursor: pointer;
+            border: none;
         }
         .fa-ellipsis1{
             border: solid black 3px;
@@ -160,8 +168,9 @@
             display:flex;
             flex-direction: column;
             background-color: rgb(242, 245, 247);
-            border-left: 2px solid black;
-            border-right: 2px solid black;
+            border-left: 0.5px solid black;
+            border-right: 0.5px solid black;
+            margin-left: 50px;
         }
        .trending{
             width:30%;
@@ -169,8 +178,8 @@
             display:flex;
             flex-direction: column;
             background-color: rgb(100, 250, 230);
-            border-left: 2px solid black;
-            border-right: 2px solid black;
+            /* border-left: 0.5px solid black; */
+            border-right: 0.5px solid black;
        }
 
        .homenav{
@@ -184,18 +193,20 @@
            background-color: white;
            z-index: 100;
            border: 1px solid lightgrey;
-           padding: 15px 20px;
+           padding: 5px 8px;
        } 
        .homenav a h2{
             font-size: 20px;
             font-weight: 800;
        }
 
-       .latestweets{
+       .homenav .latestweets{
         height: 30px;
         width: 30px;
-        padding: 8px;
+        padding: 10px;
         cursor: pointer;
+        margin-top: 8px;
+        
        }
        .tweetsFeed::-webkit-scrollbar{
            display: none;
@@ -222,21 +233,26 @@
 
        .tweet{
            flex: 0.5;
-           border-right: 1px solid var(--tweets);
+           /* border-left: 0.5px solid green; */
            min-width: fit-content;
            overflow-y:scroll;
            background-color: white;
+           height: 100vh;
+           
        }
        
        .tweetBox>form>.tweetboxInput>img{
            border-radius: 50%;
-           height: 40px;
+           height: 50px;
+           width: 50px;
        }
 
        .tweetBox{
            padding-bottom: 10px;
-           border-bottom: 8px solid lightgrey;
-           padding-right: 10px;
+           border-bottom: 5px solid lightgrey;
+           /* padding-right: 10px; */
+           width:flex;
+          
        }
        .tweetBox .tweetBoxTweetbtn{
            height: fit-content;
@@ -271,28 +287,102 @@
        .tweetboxInput{
            display: flex;
            padding: 20px;
+           padding-left: 2px;
+           padding-bottom: 5px;
        }
-       .tweetboxInput input{
+       textarea{
+           scrollbar-width:2px ;
+       }
+       .tweetboxInput input,.tweetboxInput textarea{
         flex: 1;
-        margin-left: 20px;
-        font-size: 20px; 
+        font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;;
+        margin-left: 10px;
+        font-size: 18px; 
         border: none;
         outline: none;
-        height: 100%;
+        height: 80px;
         direction: ltr;
         text-align: left;
         overflow: hidden;
-        padding-bottom: 2px;
-        padding-top: 2px;
+        overflow-y:scroll;
+        width: flex;
+        /* padding-bottom: 2px;
+        padding-top: 2px; */
         position: relative;
         white-space: pre-wrap;
-        line-height: 24px;
+        line-height: 22px;
         font-weight: 400;
         overflow-wrap: break-word;
-        
-
+        border-bottom: .5px solid lightgray;
        }
-
+       .tweet-options{
+           display: flex;
+           flex-direction: row;
+           padding: 5px;
+           width: 85%;
+           margin-left: 50px;
+           justify-content: space-between;
+           /* border-top: 0.5px solid lightgray; */
+       }
+       .tweet-options .tweet-icons{
+           width: 250px;
+           margin-left: 0px;
+       }
+       
+       .tweet-options .tweet-icons>i{
+        /* background-color: cornflowerblue; */
+        border-radius: 5px;
+        font-size: 16px;
+        padding: 8px;
+        
+       }
+       .tweet-icons>i:hover{
+           background-color: rgb(169, 220, 252);
+           cursor: pointer;
+           border-radius: 50px;
+           
+       }
+      .tweet-detail{
+          flex-direction: row;
+          justify-content: flex-start;
+          display: flex;
+          flex: 1;
+          padding-left: 5px;
+          margin-top: auto;
+          margin-bottom: auto;
+      }
+      .tweet-detail .user >img{
+          width: 50px;
+          height: 50px;
+          border-radius: 50px;
+          margin-right: 2px;
+      }
+      .tweet-detail .user ,.tweet-detail .user>b{
+          display: flex;
+          flex-direction: row;
+      }
+      .user .tweet-detail1 .tweet-para{
+          display: flex;
+          flex: 1;
+          word-wrap: break-word;
+          padding: 5px;
+          margin-top:-20px;
+          border-bottom: 0.5px solid lightgray;
+          display: flex;
+          background-color: lightgreen;
+          text-justify: distribute;
+      }
+      .user{
+          display: flex;
+          flex: 1;
+      }
+      .retweet{
+          font-size: 12px;
+          font-style: bold;
+          font-weight: 800;
+          color: rgb(137, 49, 219);
+          margin-left: 50px;
+      }
     </style>
 </head>
 <body>
@@ -343,16 +433,71 @@
                         <img src="profileimg.jpg">
                     
                 </div> -->
-                <div class="tweetBox" >
-                    <form>
-                        <div class="tweetboxInput">
-                            <img src="profileimg.jpg" alt="tweeter">
-                            <input type="textarea" placeholder="whats happening?"  id="tweetBox" for="tweetBox"/>
-                        </div>
-                        <button class="tweetBoxTweetbtn" type="button">Tweet</button>
-                    </form>
-                      
-                </div>
+                    <div class="tweetBox" >
+                        <!-- <form>
+                            <div class="tweetboxInput">
+                                <img src="profileimg.jpg" alt="tweeter">
+                                <input type="text" placeholder="whats happening?"  id="tweetBox" for="tweetBox"/>
+                                
+                            </div>
+                            <button class="tweetBoxTweetbtn" type="button">Tweet</button>
+                        </form> -->
+                        <form>
+                            <div class="tweetboxInput">
+                                <img src="profileimg.jpg" alt="tweeter">
+                                <textarea placeholder="whats happening?"></textarea>
+
+                            </div>
+                            <div class="tweet-options">
+                                <div class="tweet-icons">
+                                    <!-- <span class="material-icons-outlined">
+                                        image
+                                    </span>
+                                    <span class="material-icons-outlined">
+                                        gif_box
+                                    </span>
+                                    <span class="material-icons-outlined">
+                                        poll
+                                    </span>
+                                    <span class="material-icons-outlined">
+                                        sentiment_satisfied_alt
+                                    </span>
+                                    <span class="material-icons-outlined">
+                                        event
+                                    </span> -->
+                                    <i class="far fa-image"></i>
+                                    <i class="far fa-file-video"></i>
+                                    <i class="fas fa-poll-h"></i>
+                                    <i class="far fa-smile"></i>
+                                    <i class="fas fa-calendar-day"></i>
+                                </div>
+                                <div>
+                                <button class="tweetBoxTweetbtn" type="button">Tweet</button>
+                                </div>
+                            </div>
+                            
+                        </form>
+                        
+                    </div>
+                    <div class="tweets">
+                        <span class="retweet">retweeted by {{name}}</span>
+                            <div class="tweet-detail">
+                                <div class="user">
+                                    <img src="profileimg.jpg" alt="tweeter">
+                                    <div class="tweet-detail1">
+                                        <b>Venkataramana1191</b>
+                                        <div class="tweet-para">
+                                            <p>Unfortunate that Singapore has not included India in the list of countries that it has opened for. The government of India should take up the matter seriously.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="tweet-reaction">
+
+                                </div>
+                            </div>
+                    </div>
             </div>
         </div>
     <div class="trending"></div>
